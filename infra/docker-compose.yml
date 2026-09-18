@@ -1,0 +1,35 @@
+services:
+  api:
+    image: node:20-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm start"
+    volumes:
+      - ..:/app
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:NotARealP@ssw0rd_2024!@postgres:5432/app
+      REDIS_URL: redis://:r3d1s_d3m0_t0k3n_x9k2m7p4q1@redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: NotARealP@ssw0rd_2024!
+      POSTGRES_DB: app
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --requirepass r3d1s_d3m0_t0k3n_x9k2m7p4q1
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:

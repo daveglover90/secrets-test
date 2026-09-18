@@ -1,0 +1,6 @@
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+
+# NOTE: .env and infra/keys/ are intentionally NOT ignored — this repo is a scanner demo.

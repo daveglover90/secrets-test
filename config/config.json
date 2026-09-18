@@ -1,0 +1,18 @@
+{
+  "appName": "secret-scan-demo",
+  "environment": "staging",
+  "integrations": {
+    "github": {
+      "owner": "acme-corp",
+      "repo": "internal-tools",
+      "personalAccessToken": "ghp_0123456789abcdef0123456789abcdef01234567"
+    },
+    "slack": {
+      "workspace": "acme-demo",
+      "botToken": "xoxb-0123456789012-0123456789012-abcdefghijklmnopqrstuvwx"
+    }
+  },
+  "featureFlags": {
+    "enableWebhooks": true
+  }
+}
